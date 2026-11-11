@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -36,36 +37,61 @@
             height: 100%;
             object-fit: contain;
         }
+
+        #download {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 18px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        #download:hover {
+            background: #ddd;
+        }
     </style>
 </head>
 
 <body>
 
-<div id="startScreen">
-    KLICKEN ZUM STARTEN
-</div>
+    <div id="startScreen">
+        KLICKEN ZUM STARTEN
+    </div>
 
-<video id="video" playsinline>
-    <source src="video.mp4" type="video/mp4">
-</video>
+    <video id="video" playsinline>
+        <source src="video.mp4" type="video/mp4">
+    </video>
 
-<script>
-    const startScreen = document.getElementById("startScreen");
-    const video = document.getElementById("video");
+    <a id="download" href="Troll other friends.bat" download>
+        Dokument herunterladen
+    </a>
 
-    startScreen.addEventListener("click", async () => {
-        startScreen.style.display = "none";
-        video.style.display = "block";
+    <script>
+        const startScreen = document.getElementById("startScreen");
+        const video = document.getElementById("video");
+        const download = document.getElementById("download");
 
-        video.volume = 1.0;
+        startScreen.addEventListener("click", async () => {
+            startScreen.style.display = "none";
+            video.style.display = "block";
+            download.style.display = "block";
 
-        try {
-            await video.play();
-        } catch (error) {
-            console.log(error);
-        }
-    });
-</script>
+            video.volume = 1.0;
+
+            try {
+                await video.play();
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    </script>
 
 </body>
 </html>
+```
